@@ -13,7 +13,7 @@ var confirmNum;
 var confirmSpecial;
 
 
-// Write password to the #password input
+// User chooses character length
 function generatePassword() {
     var value = prompt("How many characters in your password? Choose a value from 8 to 128");
     var length = parseInt(value);
@@ -28,7 +28,8 @@ function generatePassword() {
       alert("You must choose a value between 8 and 128");
       return "Please Try Again";
     }
-  
+
+//User chooses character type criteria to be included in password via confirms   
   confirmUpper = confirm("Do you want uppercase characters?");
   confirmLower = confirm("Do you want lowercase characters?");
   confirmNum = confirm("Do you want numbers?");
@@ -61,6 +62,7 @@ function generatePassword() {
     }
   }
 
+// Randomizes the characters based on predetermined character set and length of password
   var password = "";
   for (var i = 0; i < length; i++) {
     var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
@@ -71,6 +73,8 @@ function generatePassword() {
   
 }
 
+
+// Writes generated password to the document
 function writePassword()  {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -78,8 +82,10 @@ function writePassword()  {
   passwordText.value = password;
 }
 
+//Adds click functionality to the generate button
 generateBtn.addEventListener("click", writePassword);
 
+//Gives functionality to the copy button to copy password to clipboard on click
 var copy = document.querySelector("#copy");
 copy.addEventListener("click", function () {
     copyPassword();
